@@ -14,6 +14,9 @@
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QListWidget>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -34,6 +37,10 @@ public:
     QFrame *frame;
     QPushButton *pushButton;
     QPushButton *pushButton_2;
+    QProgressBar *progressBar;
+    QLineEdit *lineEdit;
+    QListWidget *listWidgetMd5;
+    QListWidget *listWidgetDuplicate;
 
     void setupUi(QWidget *Widget)
     {
@@ -137,10 +144,24 @@ public:
         frame->setFrameShadow(QFrame::Raised);
         pushButton = new QPushButton(frame);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(270, 230, 93, 28));
+        pushButton->setGeometry(QRect(470, 330, 93, 28));
         pushButton_2 = new QPushButton(frame);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(270, 290, 93, 28));
+        pushButton_2->setGeometry(QRect(440, 20, 93, 28));
+        progressBar = new QProgressBar(frame);
+        progressBar->setObjectName(QString::fromUtf8("progressBar"));
+        progressBar->setGeometry(QRect(10, 330, 451, 23));
+        progressBar->setValue(0);
+        lineEdit = new QLineEdit(frame);
+        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        lineEdit->setGeometry(QRect(0, 20, 401, 21));
+        listWidgetMd5 = new QListWidget(frame);
+        new QListWidgetItem(listWidgetMd5);
+        listWidgetMd5->setObjectName(QString::fromUtf8("listWidgetMd5"));
+        listWidgetMd5->setGeometry(QRect(30, 80, 256, 192));
+        listWidgetDuplicate = new QListWidget(frame);
+        listWidgetDuplicate->setObjectName(QString::fromUtf8("listWidgetDuplicate"));
+        listWidgetDuplicate->setGeometry(QRect(310, 80, 256, 192));
 
         verticalLayout_2->addWidget(frame);
 
@@ -162,6 +183,13 @@ public:
         btnClose->setText(QString());
         pushButton->setText(QCoreApplication::translate("Widget", "openfile", nullptr));
         pushButton_2->setText(QCoreApplication::translate("Widget", "getfiles", nullptr));
+
+        const bool __sortingEnabled = listWidgetMd5->isSortingEnabled();
+        listWidgetMd5->setSortingEnabled(false);
+        QListWidgetItem *___qlistwidgetitem = listWidgetMd5->item(0);
+        ___qlistwidgetitem->setText(QCoreApplication::translate("Widget", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
+        listWidgetMd5->setSortingEnabled(__sortingEnabled);
+
     } // retranslateUi
 
 };
