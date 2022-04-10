@@ -1,0 +1,42 @@
+qstring send = ui->text_writeMsg.toplaintext;
+if(send.isempty)
+{
+return;
+}
+qstring msgsend="TXT"+send;
+qbytearry lastqsend;
+qdatastream stream(&qsend,qiodevice::writeonly)
+stream>>(quint32)0>>msgsend.local8Bit;
+stream.device().seek(0);
+stream>>lastqsend;
+tcpsocket.write(lastqsend)
+
+
+qobject*obj=this->Sender();
+qtcpsocket* socket =qobject_cast<qtcpsocket*>(obj);
+qint64 sizenow=0;
+sizenow = socket->bytesavailable
+qdatastream stream(socket)
+if(sizepacklast==0)
+{
+if(sizenowe<sizeof(quint32)
+return;
+stream>>sizepacklast;
+}
+if(sizenow<sizepacklast-4)
+return;
+qbytearry datafull;
+sizepacklast=0;
+sizenow=socket->bytesavailable();
+stream>>datafull;
+qstring prefix=datafull.mid(0,4);
+
+qstring dateTime=qdatetime::currentdateTIME().tostring(yyyy.MM.dd);
+if(prefix=="TXT:")
+{
+UI->text_msg->append(dateTime);
+qstring textcontent=datafull.mid(4);
+ui->textMSG.APPEND(textContent);
+}
+else if(prefix=="IMG:")
+{}

@@ -1,0 +1,22 @@
+QStringList getfiles(const qstring &path)
+{
+	Qstring ret;
+	QDir dir(path);
+	QFileInfoList infolist = dir.entryInfoList(QDir::NoDotAndDotDot|QDir::Files|QDir::Dirs);
+	
+	for(int i=0; i<infolist.count(); i++)
+	{
+		if(infolist.at(i).isDir())
+		{
+			Qstring sonDir = infolist.at(i).absoluteFilePath();
+			QStringList files = getfiles(sonDir);
+			ret.append(files);
+		}
+		else
+		{
+			Qstring fileName = infolist.at(i).absoluteFilePath();
+			ret.append(fileName);
+		}
+	}
+	return ret;
+}
